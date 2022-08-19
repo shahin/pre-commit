@@ -100,7 +100,7 @@ def _hook(
         ret.update(dct)
 
     version = ret['minimum_pre_commit_version']
-    if packaging.parse.version(version) > packaging.parse.version(C.VERSION):
+    if packaging.version.parse(version) > packaging.version.parse(C.VERSION):
         logger.error(
             f'The hook `{ret["id"]}` requires pre-commit version {version} '
             f'but version {C.VERSION} is installed.  '
