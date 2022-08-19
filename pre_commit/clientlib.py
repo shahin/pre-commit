@@ -6,6 +6,7 @@ import logging
 import re
 import shlex
 import sys
+from pkg_resources import packaging
 from typing import Any
 from typing import Sequence
 
@@ -19,7 +20,6 @@ from pre_commit.commands.validate_manifest import validate_manifest
 from pre_commit.errors import FatalError
 from pre_commit.languages.all import all_languages
 from pre_commit.logging_handler import logging_handler
-from pkg_resources import packaging
 from pre_commit.util import yaml_load
 
 logger = logging.getLogger('pre_commit')

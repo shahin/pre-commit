@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+from pkg_resources import packaging
 from typing import Any
 from typing import Sequence
 
@@ -15,7 +16,6 @@ from pre_commit.languages.all import languages
 from pre_commit.languages.helpers import environment_dir
 from pre_commit.prefix import Prefix
 from pre_commit.store import Store
-from pkg_resources import packaging
 from pre_commit.util import rmtree
 
 

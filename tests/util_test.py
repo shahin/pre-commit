@@ -12,7 +12,6 @@ from pre_commit.util import cmd_output
 from pre_commit.util import cmd_output_b
 from pre_commit.util import cmd_output_p
 from pre_commit.util import make_executable
-from pkg_resources import packaging
 from pre_commit.util import rmtree
 from pre_commit.util import tmpdir
 
