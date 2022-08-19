@@ -15,7 +15,7 @@ from pre_commit.languages.all import languages
 from pre_commit.languages.helpers import environment_dir
 from pre_commit.prefix import Prefix
 from pre_commit.store import Store
-from pre_commit.util import parse_version
+from pkg_resources import packaging
 from pre_commit.util import rmtree
 
 
@@ -100,7 +100,7 @@ def _hook(
         ret.update(dct)
 
     version = ret['minimum_pre_commit_version']
-    if parse_version(version) > parse_version(C.VERSION):
+    if packaging.parse.version(version) > packaging.parse.version(C.VERSION):
         logger.error(
             f'The hook `{ret["id"]}` requires pre-commit version {version} '
             f'but version {C.VERSION} is installed.  '

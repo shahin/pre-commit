@@ -19,7 +19,7 @@ from pre_commit.commands.validate_manifest import validate_manifest
 from pre_commit.errors import FatalError
 from pre_commit.languages.all import all_languages
 from pre_commit.logging_handler import logging_handler
-from pre_commit.util import parse_version
+from pkg_resources import packaging
 from pre_commit.util import yaml_load
 
 logger = logging.getLogger('pre_commit')
@@ -36,7 +36,7 @@ def check_type_tag(tag: str) -> None:
 
 
 def check_min_version(version: str) -> None:
-    if parse_version(version) > parse_version(C.VERSION):
+    if packaging.parse.version(version) > packaging.parse.version(C.VERSION):
         raise cfgv.ValidationError(
             f'pre-commit version {version} is required but version '
             f'{C.VERSION} is installed.  '
