@@ -76,10 +76,10 @@ def main() -> int:
             volume_options_for_current_dir = ()
             version = args.version
         else:
-            wheel_spec = 'pre_commit'
+            wheel_spec = '.'
             cwd = os.getcwd()
             volume_options_for_current_dir = (  # type: ignore
-                '--volume', f'{cwd}:{cwd}:ro',
+                '--volume', f'{cwd}:{cwd}:rw',
             )
             config = configparser.ConfigParser()
             config.read(f'{cwd}/setup.cfg')
@@ -88,6 +88,7 @@ def main() -> int:
         _msg('populating wheels...')
         _exit_if_retv(
             'podman', 'run', '--rm', '--volume', f'{wheeldir}:/wheels:rw',
+            f'--workdir={cwd}',
             *volume_options_for_current_dir, IMG,
             'pip', 'wheel', wheel_spec, 'setuptools',
             '--wheel-dir', '/wheels',
