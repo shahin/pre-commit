@@ -36,7 +36,7 @@ def check_type_tag(tag: str) -> None:
 
 
 def check_min_version(version: str) -> None:
-    if packaging.parse.version(version) > packaging.parse.version(C.VERSION):
+    if packaging.version.parse(version) > packaging.version.parse(C.VERSION):
         raise cfgv.ValidationError(
             f'pre-commit version {version} is required but version '
             f'{C.VERSION} is installed.  '
